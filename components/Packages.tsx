@@ -13,7 +13,7 @@ export default function Packages() {
           eyebrow="Cómo empezar"
           title="Elige cómo quieres"
           accent="empezar"
-          subtitle="Cada servicio funciona de forma independiente: no hace falta contratarlo todo junto."
+          subtitle="Cada servicio funciona de forma independiente: no hace falta contratarlo todo junto. Precios orientativos sin IVA; dominio, hosting y licencias de terceros van aparte."
         />
         <div className="packages">
           {packages.map((p, i) => (

@@ -1,14 +1,28 @@
 import type { Metadata } from 'next';
 import ContactSection from '@/components/ContactSection';
+import { JsonLd, contactSchema } from '@/lib/schema';
+import { site } from '@/lib/content';
 
 export const metadata: Metadata = {
-  title: 'Contacto',
-  description: 'Cuéntanos qué quieres automatizar o qué web necesitas. Te respondemos con una propuesta clara en menos de 24h.',
+  title: 'Contacto: pide tu diagnóstico de IA gratuito',
+  description:
+    'Contacta con GALEON, consultora de inteligencia artificial en Sevilla. Cuéntanos qué quieres automatizar o qué web necesitas y te respondemos con una propuesta clara en menos de 24h.',
+  alternates: { canonical: '/contacto' },
+  openGraph: {
+    title: 'Contacto | GALEON',
+    description: 'Cuéntanos qué quieres automatizar o qué web necesitas. Propuesta clara en menos de 24h.',
+    url: '/contacto',
+    siteName: site.name,
+    locale: 'es_ES',
+    type: 'website',
+    images: [{ url: '/og-image.png', width: 1200, height: 630, alt: 'GALEON, consultora de inteligencia artificial en Sevilla' }],
+  },
 };
 
 export default function ContactPage() {
   return (
     <>
+      <JsonLd data={contactSchema()} />
       <section className="page-header">
         <div className="container">
           <span className="eyebrow">Contacto</span>

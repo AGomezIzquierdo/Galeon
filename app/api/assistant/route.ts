@@ -1,4 +1,5 @@
 import { NextResponse } from 'next/server';
+import { priceList } from '@/lib/content';
 
 // La clave de Groq solo vive en el servidor (GROQ_API_KEY en .env.local o en el hosting).
 const SYSTEM_PROMPT =
@@ -6,8 +7,13 @@ const SYSTEM_PROMPT =
   'automatización con IA, asistentes, integraciones y desarrollo web a medida. Responde en español, de forma breve, ' +
   'cercana y profesional (máximo 3-4 frases). Si el visitante muestra interés real en un proyecto, invítale a pedir ' +
   'un diagnóstico gratuito en la sección de contacto de la web. No respondas a temas que no estén relacionados con ' +
-  'GALEON o sus servicios: en ese caso, indica amablemente que no os dedicáis a eso. No inventes precios ni plazos: ' +
-  'todos los proyectos se presupuestan a medida tras un diagnóstico.';
+  'GALEON o sus servicios: en ese caso, indica amablemente que no os dedicáis a eso. GALEON está en Sevilla y trabaja ' +
+  'en remoto con toda España. Si preguntan precios, da solo estos rangos orientativos (sin IVA; el precio final se ' +
+  'concreta tras el diagnóstico y los servicios de terceros van aparte): ' +
+  priceList
+    .map((p) => `${p.service}: ${p.max ? `${p.min}-${p.max} €` : `desde ${p.min} €`}${p.monthly ? '/mes' : ''}`)
+    .join('; ') +
+  '. No inventes otros precios ni plazos.';
 
 type ChatMessage = { role: 'user' | 'assistant'; content: string };
 

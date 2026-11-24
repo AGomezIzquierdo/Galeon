@@ -1669,6 +1669,10 @@ button {
   transition: color 0.2s;
 }
 
+.footer__links address {
+  font-style: normal;
+}
+
 .footer__links a:hover {
   color: var(--cyan);
 }

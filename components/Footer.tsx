@@ -16,7 +16,7 @@ export default function Footer() {
             <Image src="/img/galeon-simbolo-blanco.svg" alt="" width={40} height={41} unoptimized />
             <span>GALEON</span>
           </Link>
-          <p>{site.tagline}. Automatización con IA y desarrollo web para negocios que quieren escalar sin fricción.</p>
+          <p>{site.tagline} en {site.location.city}. Automatización con IA, asistentes y desarrollo web para pymes, autónomos y comercios de toda España.</p>
         </div>
         <nav className="footer__links" aria-label="Enlaces del pie de página">
           <strong>Explora</strong>
@@ -30,6 +30,9 @@ export default function Footer() {
         <div className="footer__links">
           <strong>Contacto</strong>
           <a href={`mailto:${site.email}`}>{site.email}</a>
+          <address>
+            {site.location.city}, {site.location.country}
+          </address>
           {socials.map((s) => (
             <a key={s.label} href={s.href} target="_blank" rel="noopener noreferrer">
               {s.label}
